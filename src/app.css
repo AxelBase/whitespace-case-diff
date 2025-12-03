@@ -1,0 +1,244 @@
+/* app.css */
+
+/* --- Variables (Light Mode Default - Pearl Opal Green Theme) --- */
+:root {
+  --card-background: var(--input-background);
+
+  --primary-h: 180;
+  --primary-s: 37%;
+  --primary-l: 16%; /* #193737 */
+  
+  --primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-bg: #f4f7f7; /* Very light opal tint */
+  
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 8px 32px 0 rgba(25, 55, 55, 0.1);
+  
+  --color-text-main: #193737; /* Dark text on light background */
+  --color-text-muted: #546e7a;
+  --color-accent: #193737; /* Pearl Opal Green */
+  --color-accent-hover: #122929;
+  
+  --input-bg: #ffffff;
+  --input-border: #dbebe8;
+  
+  --blob-color-1: #d1e8e8; /* Soft Opal Green Mist */
+  --blob-color-2: #c2dede; /* Deeper Mist */
+
+  --radius-lg: 24px;
+  
+  --bs-body-bg: var(--primary-bg);
+  --bs-body-color: var(--color-text-main);
+  
+  /* Diff Colors */
+  --diff-add-bg: rgba(25, 55, 55, 0.1); 
+  --diff-add-border: #193737;
+  --diff-rem-bg: rgba(220, 53, 69, 0.1);
+  --diff-rem-border: #dc3545;
+
+  /* Additional colors for sections/highlights */
+  --color-highlight-bg: #ffffff;
+  --color-highlight-border: #e0e0e0;
+}
+
+/* --- Dark Mode Overrides --- */
+[data-bs-theme="dark"] {
+  --primary-bg: #0b1a1a; /* Deepest Green Black */
+  
+  /* Glass should use a darker color for better contrast with light text */
+  --glass-bg: rgba(18, 38, 38, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  
+  --color-text-main: #e0f2f2; /* Light text on dark background */
+  --color-text-muted: #9ab0b0;
+  --color-accent: #a8e0e0; /* Brighter Opal for strong contrast on dark background */
+  --color-accent-hover: #c4fafa;
+  
+  /* Input/CodeMirror background should be darker than primary-bg for depth */
+  --input-bg: #142b2b; 
+  --input-border: #234242;
+  
+  --blob-color-1: #1c3d3d;
+  --blob-color-2: #152e2e;
+
+  --diff-add-bg: rgba(168, 224, 224, 0.15); /* Updated to use new accent color */
+  --diff-rem-bg: rgba(220, 53, 69, 0.15);
+  --diff-add-border: #a8e0e0;
+  
+  --color-highlight-bg: #0e1f1f;
+  --color-highlight-border: #142b2b;
+}
+
+/* --- Global & Reset --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--primary-bg);
+  color: var(--color-text-main);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- Animated Background Blobs (Kept unchanged) --- */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: floatBlob 28s infinite alternate ease-in-out;
+  transition: background-color 0.5s ease;
+}
+
+body::before {
+  background: var(--blob-color-1);
+  top: -20%;
+  left: -20%;
+}
+
+body::after {
+  background: var(--blob-color-2);
+  bottom: -20%;
+  right: -20%;
+  animation-delay: -12s;
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 40px) scale(1.08); }
+}
+
+/* --- Glassmorphism Cards --- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Editor Customization (Kept unchanged, uses variables) --- */
+.code-wrapper {
+  transition: transform 0.3s ease;
+}
+.code-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* CodeMirror Overrides */
+.cm-editor {
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--input-bg) !important;
+  color: var(--color-text-main) !important;
+  border: 1px solid var(--input-border);
+  transition: all 0.3s ease;
+}
+
+.cm-editor.cm-focused {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(25, 55, 55, 0.1);
+}
+
+.cm-scroller {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  line-height: 1.5;
+}
+
+.cm-gutters {
+  /* Use input background for a cleaner look and better contrast */
+  background-color: var(--input-bg) !important; 
+  color: var(--color-text-muted) !important;
+  border-right: 1px solid var(--input-border) !important;
+}
+
+/* --- Diff Table Styles (Kept unchanged, uses variables) --- */
+.ignored-line { 
+  /* Adjusted color for better visibility in both modes */
+  background-color: rgba(128, 128, 128, 0.05) !important; 
+}
+.added-line { 
+  background-color: var(--diff-add-bg) !important; 
+  border-left: 3px solid var(--diff-add-border);
+}
+.removed-line { 
+  background-color: var(--diff-rem-bg) !important; 
+  border-left: 3px solid var(--diff-rem-border);
+}
+
+.line-number {
+  user-select: none;
+  opacity: 0.6;
+  min-width: 40px;
+  text-align: right;
+  padding-right: 1rem !important;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+/* --- Toggles & Buttons (Kept unchanged, uses variables) --- */
+.form-check-input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+}
+.form-check-input:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Scrollbar (Kept unchanged, uses variables) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 10px;
+  border: 3px solid var(--primary-bg);
+}
+
+/* New: Styling for the FAQ/About sections that were previously hardcoded dark */
+.placeholder-section {
+  background: var(--color-highlight-bg);
+  border: 1px solid var(--color-highlight-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .placeholder-section {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item {
+  /* Use a subtle transparent background based on the accent color */
+  background: rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.1); 
+  padding: 1.2rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--color-accent);
+  transition: all 0.3s ease;
+}
+
+.faq-item summary {
+  color: var(--color-text-main);
+}
+.faq-item summary::marker { color: var(--color-accent); }
+.faq-item p { color: var(--color-text-muted); }
+
+.list-styled li {
+  color: var(--color-text-main);
+}
