@@ -1,4 +1,4 @@
-import{f as d,a as n}from"../chunks/CdRUleOI.js";import"../chunks/DYticXid.js";import{a5 as o,a9 as v,a4 as g,e as u,aa as y,ab as t,a7 as i,a8 as r}from"../chunks/559-2Dih.js";import{h as w}from"../chunks/CvFBtcwT.js";import{s as l}from"../chunks/DmzyvW8R.js";import{b as c}from"../chunks/B8J_k2Mr.js";const b=!0,D=Object.freeze(Object.defineProperty({__proto__:null,prerender:b},Symbol.toStringTag,{value:"Module"}));var q=d(`<meta name="description" content="Discover
+import{f as d,a as n}from"../chunks/CdRUleOI.js";import"../chunks/DYticXid.js";import{a5 as o,a9 as v,a4 as g,e as u,aa as y,ab as t,a7 as i,a8 as r}from"../chunks/559-2Dih.js";import{h as w}from"../chunks/CvFBtcwT.js";import{s as l}from"../chunks/DmzyvW8R.js";import{b as c}from"../chunks/KAGd_OcG.js";const b=!0,D=Object.freeze(Object.defineProperty({__proto__:null,prerender:b},Symbol.toStringTag,{value:"Module"}));var q=d(`<meta name="description" content="Discover
 why traditional diff tools create noise during code reviews by highlighting
 meaningless whitespace and case differences — and how semantic comparison fixes
 it."/> <meta property="og:title" content="Why

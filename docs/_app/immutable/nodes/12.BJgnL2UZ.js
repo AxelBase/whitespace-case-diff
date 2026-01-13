@@ -1,4 +1,4 @@
-import{f as t,a as o}from"../chunks/CdRUleOI.js";import"../chunks/DYticXid.js";import{a9 as i,a4 as c,a5 as n,e as p,aa as y,ab as v}from"../chunks/559-2Dih.js";import{h}from"../chunks/CvFBtcwT.js";import{s as d}from"../chunks/DmzyvW8R.js";import{b as m}from"../chunks/B8J_k2Mr.js";const f=!0,_=Object.freeze(Object.defineProperty({__proto__:null,prerender:f},Symbol.toStringTag,{value:"Module"}));var u=t(`<meta name="description" content="We
+import{f as t,a as o}from"../chunks/CdRUleOI.js";import"../chunks/DYticXid.js";import{a9 as i,a4 as c,a5 as n,e as p,aa as y,ab as v}from"../chunks/559-2Dih.js";import{h}from"../chunks/CvFBtcwT.js";import{s as d}from"../chunks/DmzyvW8R.js";import{b as m}from"../chunks/KAGd_OcG.js";const f=!0,_=Object.freeze(Object.defineProperty({__proto__:null,prerender:f},Symbol.toStringTag,{value:"Module"}));var u=t(`<meta name="description" content="We
 collect zero data. Your code never leaves your browser. Full privacy policy for
 the client-side semantic code comparison tool."/> <meta property="og:title" content="Privacy
 Policy | Whitespace &amp; Case Sensitive Code Diff"/> <meta property="og:description" content="100%
